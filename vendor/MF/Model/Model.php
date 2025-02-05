@@ -2,6 +2,7 @@
 
 
 namespace MF\Model;
+use MF\Model\Container;
 
 abstract class Model
 {
