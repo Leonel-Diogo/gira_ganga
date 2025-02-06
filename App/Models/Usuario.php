@@ -76,6 +76,50 @@ class Usuario extends Model
         }
         return $this;
     }
+    #PESQUISANDO POR USERS NO APP
+    public function getAll()
+    {
+        $query = "SELECT u.id, u.nome, u.email,
+                (
+                    SELECT COUNT(*)
+                    FROM tb_seguidores as us
+                    WHERE us.id_usuario = :id_usuario
+                    AND us.id_usuario_seguindo = u.id
+                ) as seguindo_sn
+                FROM tb_usuario as u
+                WHERE nome like :nome
+                AND id != :id_usuario";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':nome', '%' . $this->__get('nome') . '%');
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    #SEGUIR USUÁRIO
+    public function seguirUsuario($id_usuario_seguindo)
+    {
+        $query = "INSERT into tb_seguidores(id_usuario, id_usuario_seguindo)
+            VALUES(:id_usuario, :id_usuario_seguidor)
+            ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
+        $stmt->bindValue(':id_usuario_seguidor', $id_usuario_seguindo);
+        $stmt->execute();
+        return true;
+    }
+    public function deixarSeguirUsuario($id_usuario_seguindo)
+    {
+        $query = "DELETE FROM tb_seguidores
+                    WHERE id_usuario = :id_usuario
+                    AND id_usuario_seguindo = :id_usuario_seguindo
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue('id_usuario', $this->__get('id'));
+        $stmt->bindValue('id_usuario_seguindo', $id_usuario_seguindo);
+        $stmt->execute();
+        return true;
+    }
 }
 
 ?>
