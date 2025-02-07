@@ -14,8 +14,31 @@ class AppController extends Action
         $tweet = Container::getModel('Tweet');
         $tweet->__set('id_usuario', $_SESSION['id']);
 
-        $tweets = $tweet->getAll();
+        #PAGINAÇÃO
+        $total_registros_pagina = 5;#limite
+        $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+        $deslocamento = ($pagina - 1) * $total_registros_pagina;
+
+        #echo "<br><br><br> Página:  $pagina | Registros por página:  $total_registros_pagina | Deslocamento: $deslocamento";
+
+        $tweets = $tweet->getPorPagina($total_registros_pagina, $deslocamento);
+        $total_tweets = $tweet->getTotalRegistros();
+        $this->view->total_de_paginas = ceil($total_tweets['total'] / $total_registros_pagina);
+
+        #PÁGINA ATIVA
+        $this->view->pagina_ativa = $pagina;
+
+
         $this->view->tweets = $tweets;
+
+        $usuario = Container::getModel('Usuario');
+        $usuario->__set('id', $_SESSION['id']);
+
+        $this->view->info_usuario = $usuario->getInfoUsuario();
+        $this->view->total_tweets = $usuario->getTotalTweets();
+        $this->view->total_seguindo = $usuario->getTotalSeguindo();
+        $this->view->total_seguidores = $usuario->getTotalSeguidores();
+
         $this->render('timeline');
     }
     public function tweet()
@@ -72,4 +95,22 @@ class AppController extends Action
         header('location: /quem_seguir');
         #ID_USUARIO
     }
+    public function removerTweet()
+    {
+        $this->validaAutenticacao(); // Garante que o usuário está logado
+
+        if (!isset($_GET['id_tweet']) || empty($_GET['id_tweet'])) {
+            header('Location: /timeline?erro=invalid_id');
+            exit;
+        }
+
+        $tweet = Container::getModel('Tweet');
+        $tweet->__set('id_usuario', $_SESSION['id']); // Pega o usuário logado
+        $tweet->removerTweet($_GET['id_tweet']); // Chama a função para excluir
+
+        header('Location: /timeline'); // Redireciona para a timeline
+        exit;
+    }
+
+
 }
