@@ -1,19 +1,13 @@
 <?php
-
-
 namespace MF\Model;
-use MF\Model\Container;
 
+use PDO;
 abstract class Model
 {
-
-	protected $db;
-
-	public function __construct(\PDO $db)
-	{
-		$this->db = $db;
-	}
+    protected $db;
+    public function __construct(PDO $db)
+    {
+        $this->db = $db;
+    }
 }
-
-
 ?>
