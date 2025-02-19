@@ -1,0 +1,169 @@
+<!-- GESTÃO DE JOGOS -->
+<div class="row g-2 my-2">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Gestão de Jogos</h5>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGameModal">
+                        <i class="fas fa-plus me-2"></i>Novo Jogo
+                    </button>
+                    <div class="input-group" style="width: 300px;">
+                        <input type="text" class="form-control" placeholder="Buscar jogo...">
+                        <button class="btn btn-outline-secondary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome do Jogo</th>
+                                <th>Data</th>
+                                <th>Times Participantes</th>
+                                <th>Placar</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jogo 1</td>
+                                <td>12/02/2025</td>
+                                <td>Time A vs Time B</td>
+                                <td>2-1</td>
+                                <td><span class="badge bg-success">Finalizado</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#editGameModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#deleteGameModal">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#gameDetailsModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Mais jogos aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Cadastro de Novo Jogo -->
+<div class="modal fade" id="newGameModal" tabindex="-1" aria-labelledby="newGameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newGameModalLabel">Cadastrar Novo Jogo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="gameName" class="form-label">Nome do Jogo</label>
+                        <input type="text" class="form-control" id="gameName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gameDate" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="gameDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="teams" class="form-label">Times Participantes</label>
+                        <input type="text" class="form-control" id="teams" placeholder="Ex: Time A vs Time B" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gameStatus" class="form-label">Status</label>
+                        <select class="form-select" id="gameStatus" required>
+                            <option value="scheduled">Agendado</option>
+                            <option value="ongoing">Em andamento</option>
+                            <option value="finished">Finalizado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="score" class="form-label">Placar</label>
+                        <input type="text" class="form-control" id="score" placeholder="Ex: 2-1" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar Jogo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Edição de Jogo -->
+<div class="modal fade" id="editGameModal" tabindex="-1" aria-labelledby="editGameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editGameModalLabel">Editar Jogo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="editGameName" class="form-label">Nome do Jogo</label>
+                        <input type="text" class="form-control" id="editGameName" value="Jogo 1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editGameDate" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="editGameDate" value="2025-02-12" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTeams" class="form-label">Times Participantes</label>
+                        <input type="text" class="form-control" id="editTeams" value="Time A vs Time B" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editGameStatus" class="form-label">Status</label>
+                        <select class="form-select" id="editGameStatus" required>
+                            <option value="scheduled">Agendado</option>
+                            <option value="ongoing">Em andamento</option>
+                            <option value="finished" selected>Finalizado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editScore" class="form-label">Placar</label>
+                        <input type="text" class="form-control" id="editScore" value="2-1" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Remoção de Jogo -->
+<div class="modal fade" id="deleteGameModal" tabindex="-1" aria-labelledby="deleteGameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteGameModalLabel">Remover Jogo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza de que deseja remover o jogo <strong id="gameToDelete"></strong>?</p>
+                <p>Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Remover Jogo</button>
+            </div>
+        </div>
+    </div>
+</div>

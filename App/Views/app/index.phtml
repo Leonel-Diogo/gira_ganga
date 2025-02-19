@@ -1,0 +1,230 @@
+<!-- GESTÃO DE TIMES e Notificações  -->
+<div class="row g-2 my-2">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Gestão de Times</h5>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTeamModal">
+                        <i class="fas fa-plus me-2"></i>Novo Time
+                    </button>
+                    <div class="input-group" style="width: 300px;">
+                        <input type="text" class="form-control" placeholder="Buscar time...">
+                        <button class="btn btn-outline-secondary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome do Time</th>
+                                <th>Capitão</th>
+                                <th>Jogadores</th>
+                                <th>Torneios</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Advocacia FC</td>
+                                <td>João Silva</td>
+                                <td>15/20</td>
+                                <td>2</td>
+                                <td><span class="badge bg-success">Ativo</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#editTeamModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#deleteTeamModal">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#teamDetailsModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Mais times aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Notificações -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Notificações Recentes</h5>
+            </div>
+            <div class="card-body">
+                <div class="notification-item">
+                    <strong>Nova Inscrição</strong>
+                    <p class="mb-0">Time "Direito FC" solicitou participação no torneio</p>
+                    <small class="text-muted">Há 2 horas</small>
+                </div>
+                <div class="notification-item">
+                    <strong>Resultado Pendente</strong>
+                    <p class="mb-0">Partida Advocacia FC vs Jurídico SC aguarda confirmação</p>
+                    <small class="text-muted">Há 5 horas </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de Cadastro de Time -->
+<div class="modal fade" id="newTeamModal" tabindex="-1" aria-labelledby="newTeamModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newTeamModalLabel">Cadastrar Novo Time</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/index" method="post">
+                    <div class="mb-3">
+                        <label for="nomeTime" class="form-label">Nome do Time</label>
+                        <input type="text" class="form-control" name="nome" id="nomeTime"
+                            placeholder="Exemplo: Advocacia FC">
+                    </div>
+                    <div class="mb-3">
+                        <label for="capitao" class="form-label">Nome do Capitão</label>
+                        <input type="text" class="form-control" name="capitao" id="capitao"
+                            placeholder="Exemplo: João Silva">
+                    </div>
+                    <div class="mb-3">
+                        <label for="qtd_jogadores" class="form-label">Número de Jogadores</label>
+                        <input type="number" class="form-control" name="qtd_jogadores" id="qtd_jogadores"
+                            placeholder="Exemplo: 15">
+                    </div>
+                    <div class="mb-3">
+                        <label for="torneios_participando" class="form-label">Torneios Participando</label>
+                        <input type="number" class="form-control" name="torneios_participando"
+                            id="torneios_participando" placeholder="Exemplo: 2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="status_atual" class="form-label">Status</label>
+                        <select class="form-select" id="status_atual" name="status_atual">
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+                    <button type="reset" style="display: none;" id="cancelar">Cancelar</button>
+                    <button type="submit" style="display: none;" id="cadastrar">Cadastrar Time</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    onclick="document.getElementById('cancelar').click()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" onclick="document.getElementById('cadastrar').click()">
+                    Cadastrar Time
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Edição de Time -->
+<div class="modal fade" id="editTeamModal" tabindex="-1" aria-labelledby="editTeamModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTeamModalLabel">Editar Time</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="editTeamName" class="form-label">Nome do Time</label>
+                        <input type="text" class="form-control" id="editTeamName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTeamCaptain" class="form-label">Nome do Capitão</label>
+                        <input type="text" class="form-control" id="editTeamCaptain">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTeamPlayers" class="form-label">Número de Jogadores</label>
+                        <input type="number" class="form-control" id="editTeamPlayers">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTeamTournaments" class="form-label">Torneios Participando</label>
+                        <input type="number" class="form-control" id="editTeamTournaments">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTeamStatus" class="form-label">Status</label>
+                        <select class="form-select" id="editTeamStatus">
+                            <option value="active">Ativo</option>
+                            <option value="inactive">Inativo</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Remoção de Time -->
+<div class="modal fade" id="deleteTeamModal" tabindex="-1" aria-labelledby="deleteTeamModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteTeamModalLabel">Remover Time</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza de que deseja remover o time <strong id="teamToDelete"></strong>?</p>
+                <p>Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Remover Time</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Detalhes do Time -->
+<div class="modal fade" id="teamDetailsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalhes do Time</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Nome do Time</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nome do Capitão</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Número Máximo de Jogadores</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Logo do Time</label>
+                        <input type="file" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

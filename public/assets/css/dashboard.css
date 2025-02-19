@@ -1,0 +1,59 @@
+.sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #1a237e;
+    color: white;
+    padding-top: 20px;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    margin: 5px 0;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.stats-card,
+.statistic-card {
+    border-left: 4px solid #1a237e;
+}
+
+.notification-item {
+    border-left: 4px solid #1a237e;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.notification-item:hover {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .bg-light {
+        position: absolute;
+    }
+
+    .bg-light .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}

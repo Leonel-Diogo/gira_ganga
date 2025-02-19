@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Sports</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!--CSS CUSTOMIZADO-->
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/indexResponsive.css">
+</head>
+
+<body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-law fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-gavel me-2"></i>
+                Lawyer<sub>sports</sub>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#torneios">Torneios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#view-team">Times</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#jogos-recentes">Partidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#estatistica">Estatísticas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#noticias">Notícias</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </button>
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <i class="fas fa-user-plus me-2"></i>Cadastro
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-law text-white">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Senha</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 bg-law">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-law text-white">
+                    <h5 class="modal-title">Cadastro</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Código OAB</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Senha</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirmar Senha</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 bg-law">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <section class="hero-section text-center">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/img/banner/noticia6.avif" class="d-block w-100" alt="Banner 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/banner/noticia5.avif" class="d-block w-100" alt="Banner 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/banner/noticia4.avif" class="d-block w-100" alt="Banner 3">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1 class="display-4 mb-4">Campeonato de Futebol Lawyer</h1>
+            <p class="lead mb-4">A maior competição esportiva entre advogados do Brasil</p>
+            <div class="btn-container">
+                <button class="btn btn-light btn-lg me-2  mb-2 mb-sm-0">
+                    <i class="fas fa-trophy me-2"></i>Ver Torneios
+                </button>
+                <button class="btn btn-outline-light btn-lg mb-2 mb-sm-0">
+                    <i class="fas fa-info-circle me-2"></i>Saiba Mais
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Torneios Ativos -->
+    <section class="py-5" id="torneios">
+        <div class="container">
+            <h2 class="mb-4">Torneios Ativos</h2>
+
+            <!-- Carousel para telas pequenas -->
+            <div id="torneiosCarousel" class="carousel slide d-block d-md-none" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Primeiro torneio -->
+                    <div class="carousel-item active">
+                        <div class="card tournament-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-trophy text-warning me-2"></i>
+                                    Brasileirão Jurídico 2025
+                                </h5>
+                                <p class="card-text">O maior campeonato de futebol entre advogados do Brasil.</p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar me-2"></i>Início: 01/02/2025
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-users me-2"></i>32 times participantes
+                                    </small>
+                                </div>
+                                <a href="#" class="btn btn-primary bg-law">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segundo torneio -->
+                    <div class="carousel-item">
+                        <div class="card tournament-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-trophy text-warning me-2"></i>
+                                    Copa OAB 2025
+                                </h5>
+                                <p class="card-text">O maior torneio de futebol entre advogados do Brasil.</p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar me-2"></i>Início: 04/03/2025
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-users me-2"></i>16 times participantes
+                                    </small>
+                                </div>
+                                <a href="#" class="btn btn-primary bg-law">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terceiro torneio -->
+                    <div class="carousel-item">
+                        <div class="card tournament-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-trophy text-warning me-2"></i>
+                                    Libertadores Lawyer 2025
+                                </h5>
+                                <p class="card-text">O maior torneio de futebol entre advogados do Brasil.</p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar me-2"></i>Início: 01/05/2025
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-users me-2"></i>08 times participantes
+                                    </small>
+                                </div>
+                                <a href="#" class="btn btn-primary bg-law">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Controles do carrossel -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#torneiosCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#torneiosCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <!-- Grid para telas maiores -->
+            <div class="row g-4 d-none d-md-flex">
+                <div class="col-md-4">
+                    <div class="card tournament-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-trophy text-warning me-2"></i>
+                                Brasileirão Jurídico 2025
+                            </h5>
+                            <p class="card-text">O maior campeonato de futebol entre advogados do Brasil.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>Início: 01/02/2025
+                                </small>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-users me-2"></i>32 times participantes
+                                </small>
+                            </div>
+                            <a href="#" class="btn btn-primary bg-law">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tournament-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-trophy text-warning me-2"></i>
+                                Copa OAB 2025
+                            </h5>
+                            <p class="card-text">O maior torneio de futebol entre advogados do Brasil.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>Início: 04/03/2025
+                                </small>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-users me-2"></i>16 times participantes
+                                </small>
+                            </div>
+                            <a href="#" class="btn btn-primary bg-law">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tournament-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-trophy text-warning me-2"></i>
+                                Libertadores Lawyer 2025
+                            </h5>
+                            <p class="card-text">O maior torneio de futebol entre advogados do Brasil.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>Início: 01/05/2025
+                                </small>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-users me-2"></i>08 times participantes
+                                </small>
+                            </div>
+                            <a href="#" class="btn btn-primary bg-law">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jogos Recentes -->
+    <section class="pt-3" id="jogos-recentes">
+        <div class="container">
+            <h2 class="mb-2">Resultados Recentes</h2>
+
+            <!-- Primeira linha de jogos -->
+            <div class="row g-4 mb-2">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-center">
+                                    <img src="assets/img/escudo_times/botafogo.svg" alt="Advocacia FC" width="25">
+                                    <h5>Advocacia FC</h5>
+                                    <span class="h4">2</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="h4">VS</span>
+                                </div>
+                                <div class="text-center">
+                                    <img src="assets/img/escudo_times/bragantino.svg" alt="Jurídico SC" width="25">
+                                    <h5>Jurídico SC</h5>
+                                    <span class="h4">1</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>15/02/2024 - 15:00
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Estádio Municipal
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-center">
+                                    <img src="assets/img/escudo_times/Cuiaba_EC (1).svg" alt="Tribunais FC" width="25">
+                                    <h5>Tribunais FC</h5>
+                                    <span class="h4">0</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="h4">VS</span>
+                                </div>
+                                <div class="text-center">
+                                    <img src="assets/img/escudo_times/escudo-vitoria.svg" alt="Direito United"
+                                        width="25">
+                                    <h5>Direito United</h5>
+                                    <span class="h4">3</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>16/02/2024 - 18:00
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Arena Legal
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-center">
+                                    <img src="assets/img/escudo_times/Flamengo.svg" alt="Defensoria FC" width="25">
+                                    <h5>Defensoria FC</h5>
+                                    <span class="h4">1</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="h4">VS</span>
+                                </div>
+                                <div class="text-center">
+                                    <img src="assets/img/escudo_times/fluminense.svg" alt="Justiça RJ" width="25">
+                                    <h5>Justiça RJ</h5>
+                                    <span class="h4">1</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>17/02/2024 - 20:00
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Campo dos Juízes
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas -->
+    <section class="bg-light py-5" id="estatistica">
+        <div class="container">
+            <h2 class="mb-4">Estatísticas Disponíveis</h2>
+            <div class="row g-4 text-center text-md-start">
+                <div class="col-6 col-md-3">
+                    <div onclick="mostrarEstatistica('classificacao')" style="cursor: pointer;">
+                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                        <h4>Classificação</h4>
+                        <p class="d-none d-md-block">Tabelas atualizadas em tempo real</p>
+                        <!-- Oculta o parágrafo em telas pequenas -->
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div onclick="mostrarEstatistica('jogadores')" style="cursor: pointer;">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h4>Jogadores</h4>
+                        <p class="d-none d-md-block">Estatísticas individuais detalhadas</p>
+                        <!-- Oculta o parágrafo em telas pequenas -->
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div onclick="mostrarEstatistica('calendario')" style="cursor: pointer;">
+                        <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+                        <h4>Calendário</h4>
+                        <p class="d-none d-md-block">Agenda completa de jogos</p>
+                        <!-- Oculta o parágrafo em telas pequenas -->
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div onclick="mostrarEstatistica('historico')" style="cursor: pointer;">
+                        <i class="fas fa-history fa-3x text-primary mb-3"></i>
+                        <h4>Histórico</h4>
+                        <p class="d-none d-md-block">Dados históricos das competições</p>
+                        <!-- Oculta o parágrafo em telas pequenas -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="estatistica-detalhe" class="mt-4 p-3 bg-white border rounded shadow-sm">
+                <h3 id="detalhe">Detalhes</h3>
+                <div id="estatistica-conteudo">Selecione uma opção para ver os detalhes.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notícias -->
+    <section class="py-3" id="noticias">
+        <div class="container">
+            <h2 class="mb-2">Notícias das Competições</h2>
+            <!-- Carousel for smaller screens -->
+            <div id="carouselNoticias" class="carousel slide d-md-none" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="assets/img/banner/noticia1.avif" class="img-fluid rounded" alt="Notícia 1">
+                                <h5>Grande Final do Brasileirão Jurídico 2025</h5>
+                                <p class="d-none d-md-none">A final do campeonato está definida! Advocacia FC enfrentará
+                                    Jurídico SC em um duelo
+                                    emocionante.</p>
+                                <a href="" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="assets/img/banner/noticia2.avif" class="img-fluid rounded" alt="Notícia 2">
+                                <h5>Nova Arena para a Copa OAB 2025</h5>
+                                <p class="d-none d-md-none">A organização anunciou a construção de um novo estádio para
+                                    sediar os jogos da Copa
+                                    OAB 2025.</p>
+                                <a href="" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="assets/img/banner/noticia3.avif" class="img-fluid rounded" alt="Notícia 3">
+                                <h5>Grande Final do Brasileirão Jurídico 2025</h5>
+                                <p class="d-none d-md-none">A final do campeonato está definida! Advocacia FC enfrentará
+                                    Jurídico SC em um duelo
+                                    emocionante.</p>
+                                <a href="" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="assets/img/banner/noticia4.avif" class="img-fluid rounded" alt="Notícia 4">
+                                <h5>Nova Arena para a Copa OAB 2025</h5>
+                                <p class="d-none d-md-none">A organização anunciou a construção de um novo estádio para
+                                    sediar os jogos da Copa
+                                    OAB 2025.</p>
+                                <a href="" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoticias"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselNoticias"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+            </div>
+
+            <!-- Grid layout for larger screens -->
+            <div class="d-none d-md-block">
+                <div class="row g-4 mb-2">
+                    <div class="col-md-6">
+                        <img src="assets/img/banner/noticia1.avif" class="img-fluid rounded" alt="Notícia 1">
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Grande Final do Brasileirão Jurídico 2025</h5>
+                        <p>A final do campeonato está definida! Advocacia FC enfrentará Jurídico SC em um duelo
+                            emocionante.</p>
+                        <a href="" class="btn btn-primary">Leia mais</a>
+                    </div>
+                </div>
+                <div class="row g-4 mb-2">
+                    <div class="col-md-6">
+                        <img src="assets/img/banner/noticia2.avif" class="img-fluid rounded" alt="Notícia 2">
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Nova Arena para a Copa OAB 2025</h5>
+                        <p>A organização anunciou a construção de um novo estádio para sediar os jogos da Copa OAB 2025.
+                        </p>
+                        <a href="" class="btn btn-primary">Leia mais</a>
+                    </div>
+                </div>
+                <div class="row g-4 mb-2">
+                    <div class="col-md-6">
+                        <img src="assets/img/banner/noticia3.avif" class="img-fluid rounded" alt="Notícia 3">
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Grande Final do Brasileirão Jurídico 2025</h5>
+                        <p>A final do campeonato está definida! Advocacia FC enfrentará Jurídico SC em um duelo
+                            emocionante.</p>
+                        <a href="" class="btn btn-primary">Leia mais</a>
+                    </div>
+                </div>
+                <div class="row g-4 mb-2">
+                    <div class="col-md-6">
+                        <img src="assets/img/banner/noticia4.avif" class="img-fluid rounded" alt="Notícia 4">
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Nova Arena para a Copa OAB 2025</h5>
+                        <p>A organização anunciou a construção de um novo estádio para sediar os jogos da Copa OAB 2025.
+                        </p>
+                        <a href="" class="btn btn-primary">Leia mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Lawyer Sports</h5>
+                    <p>A maior plataforma de campeonatos de futebol para advogados</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Links Úteis</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Regulamento</a></li>
+                        <li><a href="#" class="text-white">FAQ</a></li>
+                        <li><a href="#" class="text-white">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Redes Sociais</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container d-flex justify-content-center gap-3">
+                <p>Todos os direitos reservados | Copyright &copy; <strong>2025</strong></p>
+            </div>
+            <div class="container d-flex justify-content-center gap-3">
+                <p>Desenvolvido por: <strong>Leonel Diogo</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

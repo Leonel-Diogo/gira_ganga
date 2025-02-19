@@ -1,0 +1,182 @@
+<!-- Stats Cards -->
+<div class="row g-4 mb-4">
+	<div class="col-md-3">
+		<div class="card stats-card h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Torneios Ativos</h6>
+				<h2 class="card-title mb-0">3</h2>
+				<small class="text-success">
+					<i class="fas fa-arrow-up me-1"></i>
+					+1 este mês
+				</small>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="card stats-card h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Times Registrados</h6>
+				<h2 class="card-title mb-0">24</h2>
+				<small class="text-success">
+					<i class="fas fa-arrow-up me-1"></i>
+					+5 este mês
+				</small>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="card stats-card h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Partidas Realizadas</h6>
+				<h2 class="card-title mb-0">156</h2>
+				<small class="text-success">
+					<i class="fas fa-arrow-up me-1"></i>
+					+12 esta semana
+				</small>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="card stats-card h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Usuários Ativos</h6>
+				<h2 class="card-title mb-0">312</h2>
+				<small class="text-success">
+					<i class="fas fa-arrow-up me-1"></i>
+					+28 este mês
+				</small>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Statistics -->
+<div class="row g-4">
+	<!-- Cards de Resumo -->
+	<div class="col-md-3">
+		<div class="card statistic-card h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Total de Gols</h6>
+				<h2 class="card-title mb-0">156</h2>
+				<small class="text-success">
+					<i class="fas fa-arrow-up me-1"></i>
+					+12 esta semana
+				</small>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="card statistic-card  h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Média de Gols/Jogo</h6>
+				<h2 class="card-title mb-0">2.8</h2>
+				<small class="text-success">
+					<i class="fas fa-arrow-up me-1"></i>
+					+0.3 este mês
+				</small>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="card statistic-card  h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Cartões Amarelos</h6>
+				<h2 class="card-title mb-0">45</h2>
+				<small class="text-danger">
+					<i class="fas fa-arrow-up me-1"></i>
+					+8 este mês
+				</small>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="card statistic-card  h-100">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Cartões Vermelhos</h6>
+				<h2 class="card-title mb-0">12</h2>
+				<small class="text-danger">
+					<i class="fas fa-arrow-up me-1"></i>
+					+2 este mês
+				</small>
+			</div>
+		</div>
+	</div>
+
+	<!-- Gráficos -->
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header bg-white">
+				<h5 class="mb-0">Gols por Mês</h5>
+			</div>
+			<div class="card-body">
+				<canvas id="goalsChart" height="300"></canvas> <!-- Canvas do gráfico de gols -->
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header bg-white">
+				<h5 class="mb-0">Cartões por Time</h5>
+			</div>
+			<div class="card-body">
+				<canvas id="cardsChart" height="300"></canvas> <!-- Canvas do gráfico de cartões -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- JS DE GRÁFICOS DE GOLS E CARTÕES -->
+<script>
+	const ctxGoals = document.getElementById('goalsChart').getContext('2d');
+	const goalsChart = new Chart(ctxGoals, {
+		type: 'line',
+		data: {
+			labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+			datasets: [{
+				label: 'Gols por Mês',
+				data: [5, 10, 7, 15, 8, 12],
+				borderColor: 'rgba(75, 192, 192, 1)',
+				backgroundColor: 'rgba(75, 192, 192, 0.2)',
+				borderWidth: 2,
+				fill: true
+			}]
+		},
+		options: {
+			responsive: true,
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
+
+	const ctxCards = document.getElementById('cardsChart').getContext('2d');
+	const cardsChart = new Chart(ctxCards, {
+		type: 'bar',
+		data: {
+			labels: ['Time A', 'Time B', 'Time C'],
+			datasets: [{
+				label: 'Cartões Amarelos',
+				data: [3, 5, 2],
+				backgroundColor: 'rgba(255, 206, 86, 0.2)',
+				borderColor: 'rgba(255, 206, 86, 1)',
+				borderWidth: 1
+			}, {
+				label: 'Cartões Vermelhos',
+				data: [1, 2, 1],
+				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: true,
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
+</script>

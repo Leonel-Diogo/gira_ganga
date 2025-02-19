@@ -1,0 +1,205 @@
+<!-- Torneios e Próximos Jogos -->
+<div class="row g-4 my-2">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Torneios Ativos</h5>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTournamentModal">
+                    <i class="fas fa-plus me-2"></i>Novo Torneio
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Times</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Copa OAB 2024</td>
+                                <td>16/16</td>
+                                <td><span class="badge bg-success">Em andamento</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#editTournamentModal"
+                                        onclick="fillEditForm('Copa OAB 2024', 16, 'Em andamento')"><i
+                                            class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#deleteTournamentModal"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Liga Jurídica</td>
+                                <td>12/16</td>
+                                <td><span class="badge bg-warning">Inscrições</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#editTournamentModal"
+                                        onclick="fillEditForm('Liga Jurídica', 12, 'Inscrições')"><i
+                                            class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#deleteTournamentModal"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Próximos Jogos</h5>
+            </div>
+            <div class="card-body">
+                <div class="notification-item">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <strong>Advocacia FC vs Jurídico SC</strong>
+                        <button class="btn btn-sm btn-primary">Registrar</button>
+                    </div>
+                    <div>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-2"></i>Hoje, 15:00
+                        </small>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <strong>Direito FC vs Ordem EC</strong>
+                        <button class="btn btn-sm btn-primary">Registrar</button>
+                    </div>
+                    <div>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-2"></i>Amanhã, 14:00
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Novo Torneio -->
+<div class="modal fade" id="newTournamentModal" tabindex="-1" aria-labelledby="newTournamentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newTournamentModalLabel">Cadastrar Novo Torneio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="tournamentName" class="form-label">Nome do Torneio</label>
+                        <input type="text" class="form-control" id="tournamentName"
+                            placeholder="Exemplo: Copa OAB 2024">
+                    </div>
+                    <div class="mb-3">
+                        <label for="numberOfTeams" class="form-label">Número de Times</label>
+                        <input type="number" class="form-control" id="numberOfTeams" placeholder="Exemplo: 16">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tournamentStatus" class="form-label">Status</label>
+                        <select class="form-select" id="tournamentStatus">
+                            <option value="inscriptions">Inscrições</option>
+                            <option value="ongoing">Em andamento</option>
+                            <option value="finished">Finalizado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tournamentDate" class="form-label">Regras</label>
+                        <textarea name="" class="form-control" id=""></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tournamentDate" class="form-label">Data de Início</label>
+                        <input type="date" class="form-control" id="tournamentDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tournamentDate" class="form-label">Data de Término</label>
+                        <input type="date" class="form-control" id="tournamentDate">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar Torneio</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Edição de Torneio -->
+<div class="modal fade" id="editTournamentModal" tabindex="-1" aria-labelledby="editTournamentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTournamentModalLabel">Editar Torneio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="editTournamentName" class="form-label">Nome do Torneio</label>
+                        <input type="text" class="form-control" id="editTournamentName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editNumberOfTeams" class="form-label">Número de Times</label>
+                        <input type="number" class="form-control" id="editNumberOfTeams">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTournamentStatus" class="form-label">Status</label>
+                        <select class="form-select" id="editTournamentStatus">
+                            <option value="inscriptions">Inscrições</option>
+                            <option value="ongoing">Em andamento</option>
+                            <option value="finished">Finalizado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tournamentDate" class="form-label">Regras</label>
+                        <textarea name="" class="form-control" id=""></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tournamentDate" class="form-label">Data de Início</label>
+                        <input type="date" class="form-control" id="tournamentDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tournamentDate" class="form-label">Data de Término</label>
+                        <input type="date" class="form-control" id="tournamentDate">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação de Remoção -->
+<div class="modal fade" id="deleteTournamentModal" tabindex="-1" aria-labelledby="deleteTournamentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteTournamentModalLabel">Confirmar Remoção</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja remover este torneio? Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger">Remover Torneio</button>
+            </div>
+        </div>
+    </div>
+</div>

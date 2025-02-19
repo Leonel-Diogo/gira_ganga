@@ -10,68 +10,17 @@ class Route extends Bootstrap
 	protected function initRoutes()
 	{
 
-		$routes['home'] = array(
+		$routes['index'] = array(
 			'route' => '/',
-			'controller' => 'indexController',
+			'controller' => 'AppController',
 			'action' => 'index'
 		);
 
-		$routes['inscreverse'] = array(
-			'route' => '/inscreverse',
-			'controller' => 'indexController',
-			'action' => 'inscreverse'
-		);
-
-		$routes['registrar'] = array(
-			'route' => '/registrar',
-			'controller' => 'indexController',
-			'action' => 'registrar'
-		);
-
-		$routes['autenticar'] = array(
-			'route' => '/autenticar',
-			'controller' => 'AuthController',
-			'action' => 'autenticar'
-		);
-
-
-		$routes['timeline'] = array(
-			'route' => '/timeline',
+		$routes['cadastrar_time'] = array(
+			'route' => 'cadastrar_time',
 			'controller' => 'AppController',
-			'action' => 'timeline'
+			'action' => 'cadastrarTime'
 		);
-
-		$routes['sair'] = array(
-			'route' => '/sair',
-			'controller' => 'AuthController',
-			'action' => 'sair'
-		);
-
-
-		$routes['tweet'] = array(
-			'route' => '/tweet',
-			'controller' => 'AppController',
-			'action' => 'tweet'
-		);
-
-		$routes['quem_seguir'] = array(
-			'route' => '/quem_seguir',
-			'controller' => 'AppController',
-			'action' => 'quemSeguir'
-		);
-
-		$routes['acao'] = array(
-			'route' => '/acao',
-			'controller' => 'AppController',
-			'action' => 'acao'
-		);
-
-		$routes['remover_tweet'] = array(
-			'route' => '/remover_tweet',
-			'controller' => 'AppController',
-			'action' => 'removerTweet' // Correto, chama a função de remoção
-		);
-
 
 		$this->setRoutes($routes);
 	}

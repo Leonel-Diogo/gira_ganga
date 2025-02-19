@@ -1,0 +1,72 @@
+/* Extra small - Menos de 576px */
+@media (max-width: 575.98px) {
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        /* Coloca os botões um abaixo do outro */
+    }
+
+    .btn-container button {
+        margin-bottom: 10px;
+        /* Espaço entre os botões */
+    }
+
+    .display-4 {
+        font-size: 25px !important;
+    }
+
+    .lead {
+        display: none !important;
+    }
+
+    .btn-lg {
+        font-size: 16px;
+    }
+
+    .img-fluid {
+        height: 250px !important;
+    }
+}
+
+/* Small - 576px ou mais */
+@media (min-width: 576px) {
+
+    /* Estilos para telas a partir de 576px */
+    .btn-container {
+        display: flex;
+        flex-direction: row;
+        /* Coloca os botões lado a lado */
+    }
+
+    .btn-container button {
+        margin-bottom: 0;
+        /* Sem margem inferior */
+    }
+
+    .display-4 {
+        font-size: 30px !important;
+    }
+
+
+}
+
+/* Medium - 768px ou mais */
+@media (min-width: 768px) {
+    /* Estilos para telas a partir de 768px */
+}
+
+/* Large - 992px ou mais */
+@media (min-width: 992px) {
+    /* Estilos para telas a partir de 992px */
+}
+
+/* Extra large - 1200px ou mais */
+@media (min-width: 1200px) {
+    /* Estilos para telas a partir de 1200px */
+}
+
+/* Extra extra large - 1400px ou mais */
+@media (min-width: 1400px) {
+    /* Estilos para telas a partir de 1400px */
+}

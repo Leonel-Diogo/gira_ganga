@@ -10,7 +10,7 @@ class Connection
 		try {
 
 			$conn = new \PDO(
-				"mysql:host=localhost;dbname=app_twitter;charset=utf8",
+				"mysql:host=localhost;dbname=app_giraganga;charset=utf8",
 				"root",
 				""
 			);

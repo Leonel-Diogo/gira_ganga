@@ -1,0 +1,195 @@
+<!-- RANKING -->
+<div class="row g-2 my-2">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Ranking de Times</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Posição</th>
+                                <th>Time</th>
+                                <th>Pontos</th>
+                                <th>Jogos</th>
+                                <th>V / E / D</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankingTable">
+                            <tr>
+                                <td>1</td>
+                                <td>Time A</td>
+                                <td>10</td>
+                                <td>5</td>
+                                <td>3 / 1 / 1</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Time B</td>
+                                <td>8</td>
+                                <td>5</td>
+                                <td>2 / 2 / 1</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Time C</td>
+                                <td>6</td>
+                                <td>5</td>
+                                <td>2 / 0 / 3</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Time D</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>1 / 1 / 3</td>
+                            </tr>
+                            <!-- Adicione mais times conforme o progresso do campeonato -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--JS RESULTADOS E RANKING -->
+<script>
+    // Função para registrar resultados e atualizar o ranking
+    document.getElementById('resultForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const gameSelect = document.getElementById('gameSelect');
+        const teamAScore = document.getElementById('teamAScore').value;
+        const teamBScore = document.getElementById('teamBScore').value;
+
+        const selectedGame = gameSelect.options[gameSelect.selectedIndex].text;
+        const [teamA, teamB] = selectedGame.split(" - ")[1].split(" vs ");
+
+        let resultMessage = '';
+        if (teamAScore > teamBScore) {
+            resultMessage = `${teamA} venceu ${teamB} com o placar ${teamAScore}-${teamBScore}`;
+        } else if (teamAScore < teamBScore) {
+            resultMessage = `${teamB} venceu ${teamA} com o placar ${teamBScore}-${teamAScore}`;
+        } else {
+            resultMessage = `O jogo entre ${teamA} e ${teamB} terminou empatado ${teamAScore}-${teamBScore}`;
+        }
+
+        alert(resultMessage);
+
+        // Lógica para atualizar o ranking (exemplo simples)
+        updateRanking(teamA, teamB, teamAScore, teamBScore);
+
+        // Limpar o formulário
+        document.getElementById('resultForm').reset();
+    });
+
+    // Função para atualizar o ranking
+    function updateRanking(teamA, teamB, scoreA, scoreB) {
+        let rankingTable = document.getElementById('rankingTable');
+        // Adicionar lógica de pontuação, vitória, empate e derrota para atualizar o ranking corretamente
+        // Exemplo simples de atualização (não implementa toda a lógica de campeonato real)
+
+        let rows = rankingTable.getElementsByTagName('tr');
+        let teamARow = null;
+        let teamBRow = null;
+
+        for (let row of rows) {
+            if (row.cells[1].textContent === teamA) {
+                teamARow = row;
+            }
+            if (row.cells[1].textContent === teamB) {
+                teamBRow = row;
+            }
+        }
+
+        if (teamARow && teamBRow) {
+            // Atualizar pontos para cada time (simplificado)
+            if (scoreA > scoreB) {
+                teamARow.cells[2].textContent = parseInt(teamARow.cells[2].textContent) + 3; // Vitória de A
+                teamBRow.cells[2].textContent = parseInt(teamBRow.cells[2].textContent) + 0; // Derrota de B
+            } else if (scoreA < scoreB) {
+                teamARow.cells[2].textContent = parseInt(teamARow.cells[2].textContent) + 0; // Derrota de A
+                teamBRow.cells[2].textContent = parseInt(teamBRow.cells[2].textContent) + 3; // Vitória de B
+            } else {
+                teamARow.cells[2].textContent = parseInt(teamARow.cells[2].textContent) + 1; // Empate
+                teamBRow.cells[2].textContent = parseInt(teamBRow.cells[2].textContent) + 1; // Empate
+            }
+        }
+    }
+</script>
+
+<!--PREMIAR JOGADORES -->
+<div class="row g-2 my-2">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Premiar Melhores Jogadores</h5>
+                <div class="d-flex gap-2">
+                    <div class="input-group" style="width: 300px;">
+                        <input type="text" class="form-control" placeholder="Buscar jogador...">
+                        <button class="btn btn-outline-secondary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Jogador</th>
+                                <th>Categoria</th>
+                                <th>Valor</th>
+                                <th>Data de Premiação</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="awardHistory">
+                            <tr>
+                                <td>João Silva</td>
+                                <td>Melhor Jogador</td>
+                                <td>5.000 Kz</td>
+                                <td>01/11/2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-light">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Marcos Lima</td>
+                                <td>Artilheiro</td>
+                                <td>3.000 Kz</td>
+                                <td>01/11/2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-light">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Adicione mais registros de premiação aqui -->
+                        </tbody>
+
+                    </table>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-medal me-2"></i>
+                            Premiar Jogador
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
