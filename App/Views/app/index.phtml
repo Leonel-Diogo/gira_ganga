@@ -1,3 +1,22 @@
+<!-- SUCESSO NO CADASTRO DO PRODUTO(FEEDBACK AO USER) -->
+<?php if (isset($_GET['sucesso'])) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= $_GET['sucesso']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php } ?>
+
+<!-- ERRO NO CADASTRO DO PRODUTO(FEEDBACK AO USER) -->
+<?php if (isset($_GET['erro'])) { ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?= $_GET['erro']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php } ?>
+
+
+
+
 <!-- GESTÃO DE TIMES e Notificações  -->
 <div class="row g-2 my-2">
     <div class="col-md-8">
@@ -30,27 +49,61 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Advocacia FC</td>
-                                <td>João Silva</td>
-                                <td>15/20</td>
-                                <td>2</td>
-                                <td><span class="badge bg-success">Ativo</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#editTeamModal">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#deleteTeamModal">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#teamDetailsModal">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            <!--LISTAGEM DINÂMICA DOS TIMES-->
+                            <?php foreach ($this->view->time as $time) { ?>
+                                <tr>
+                                    <td><?= $time['nome'] ?></td>
+                                    <td><?= $time['capitao'] ?></td>
+                                    <td><?= $time['qtd_jogadores'] ?></td>
+                                    <td><?= $time['torneios_participando'] ?></td>
+                                    <td><span class="badge bg-success"><?= $time['status_atual'] ?></span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#editTeamModal">
+                                            <i class="fas fa-edit text-white"></i>
+                                        </button>
+                                        <!-- Button de Remoção de Time -->
+                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#removerTime<?= $time['id_time'] ?>">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                        <!-- Modal de Remoção de Time -->
+                                        <div class="modal fade" id="removerTime<?= $time['id_time'] ?>" tabindex="-1"
+                                            aria-labelledby="removerTimeLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="removerTimeLabel">Remover
+                                                            <strong><?= $time['nome'] ?></strong>?
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Pretende remover o time <strong
+                                                                id="removerTime"><?= $time['nome'] ?></strong>?</p>
+                                                        <p>Esta ação não pode ser desfeita.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="/remover_time" method="post">
+                                                            <input type="hidden" name="id_time"
+                                                                value="<?= $time['id_time'] ?>">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cancelar</button>
+                                                            <button type="submit" class="btn btn-danger">Excluir</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-sm btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#teamDetailsModal">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+
                             <!-- Mais times aqui -->
                         </tbody>
                     </table>
@@ -88,7 +141,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/index" method="post">
+                <form action="/cadastrar_time" method="post">
                     <div class="mb-3">
                         <label for="nomeTime" class="form-label">Nome do Time</label>
                         <input type="text" class="form-control" name="nome" id="nomeTime"
@@ -174,25 +227,7 @@
     </div>
 </div>
 
-<!-- Modal de Remoção de Time -->
-<div class="modal fade" id="deleteTeamModal" tabindex="-1" aria-labelledby="deleteTeamModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteTeamModalLabel">Remover Time</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Tem certeza de que deseja remover o time <strong id="teamToDelete"></strong>?</p>
-                <p>Esta ação não pode ser desfeita.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Remover Time</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- Modal de Detalhes do Time -->
 <div class="modal fade" id="teamDetailsModal" tabindex="-1">
